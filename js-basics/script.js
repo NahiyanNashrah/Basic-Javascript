@@ -7,8 +7,7 @@ console.log(firstName + ' ' + age);
 
 
 
-/*1st coding challenge
-Comparing BMI using boolean variable
+/*Coding Challenge 1
 */
 
 var massOfMark, heightOfMark, massOfJohn, heightOfJohn,markBMI, johnBMI;
