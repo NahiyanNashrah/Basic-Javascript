@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores,roundScore, activePlayer ;
+var scores,roundScore, activePlayer;
 
 scores = [0,0];
 roundScore = 0;
@@ -60,7 +60,51 @@ document.querySelector('.btn-roll').addEventListener('click',function(){
     //3. update the roundscore if the dice value is not 1
     if(dice === 1){
         //Next player
-        activePlayer === 0 ? activePlayer = 1 : activePlayer =0;
+        nextplayer();
+
+    }else{
+        //Add the score
+        roundScore += dice;
+        document.querySelector('#current-' + activePlayer).textContent = roundScore;
+    }
+
+});
+
+//alert(Boolean('0'));
+// var x  = null;
+// alert(Number(x));
+
+
+// let counter = 1;
+// let a = counter++;
+// alert(a);
+// alert(counter);
+
+
+document.querySelector('.btn-hold').addEventListener('click', function(){
+
+    //Add current score to global score
+    scores[activePlayer] += roundScore;
+
+    //Update UI
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+
+    //Check if the player won the game
+    if(scores[activePlayer] >= 20){
+        document.querySelector('#name-' + activePlayer).textContent = 'Winner';
+        document.querySelector('.dice').style.display = 'none';
+        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+        
+
+    }else{
+    //Next player
+        nextplayer();
+    }
+});
+
+function nextplayer(){
+    activePlayer === 0 ? activePlayer = 1 : activePlayer =0;
         roundScore = 0;
 
         document.querySelector('#current-0').textContent = 0;
@@ -70,10 +114,6 @@ document.querySelector('.btn-roll').addEventListener('click',function(){
         document.querySelector('.player-0-panel').classList.toggle('active');
 
         document.querySelector('.dice').style.display = 'none';
-    }else{
-        //Add the score
-        roundScore += dice;
-        document.querySelector('#current-' + activePlayer).textContent = roundScore;
-    }
+}
 
-});
+
