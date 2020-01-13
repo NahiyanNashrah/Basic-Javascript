@@ -83,12 +83,23 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
     if(gamePlaying){
     //Add current score to global score
     scores[activePlayer] += roundScore;
-
+    
+    var finalScore , input;
+    var input = document.querySelector('.score').value;
+    console.log(input);
     //Update UI
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
+
     //Check if the player won the game
-    if(scores[activePlayer] >= 20){
+
+    if(input){
+        finalScore = input;
+    }else{
+        finalScore = 100;
+    }
+    console.log(finalScore);
+    if(scores[activePlayer] >= finalScore){
         document.querySelector('#name-' + activePlayer).textContent = 'Winner';
         document.querySelector('.dice').style.display = 'none';
         document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -148,5 +159,6 @@ function nextplayer(){
 
         document.querySelector('.dice').style.display = 'none';
 }
+
 
 

@@ -152,3 +152,12 @@ i {
 
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
+
+.score {
+    position : absolute;
+    left: 43%;
+    top:520px;
+    padding: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
