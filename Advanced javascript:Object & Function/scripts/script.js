@@ -56,8 +56,6 @@ let animal = {
   let lazy = {
     __proto__: hamster
   };
-
-
   
   // Speedy one found the food
   speedy.eat("apple");
