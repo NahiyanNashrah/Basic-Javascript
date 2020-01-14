@@ -28,59 +28,58 @@
 // console.log(john instanceof Person);
 // console.log(john);
 
-let animal = {
-    eat() {
-      this.full = true;
-    }
-  };
+// let animal = {
+//     eat() {
+//       this.full = true;
+//     }
+//   };
   
-  let rabbit = {
-    __proto__: animal
-  };
+//   let rabbit = {
+//     __proto__: animal
+//   };
   
-  console.log(rabbit.eat());
+//   console.log(rabbit.eat());
 
   let hamster = {
     stomach: [],
-  
     eat(food) {
-      // assign to this.stomach instead of this.stomach.push
-      this.stomach = [food];
+      this.stomach.push(food);
     }
   };
   
   let speedy = {
+    stomach:[],
      __proto__: hamster
   };
   
   let lazy = {
+    stomach:[],
     __proto__: hamster
   };
   
-  // Speedy one found the food
-  speedy.eat("apple");
-  console.log( speedy.stomach ); // apple
   
-  // Lazy one's stomach is empty
-  console.log( lazy.stomach ); // <nothing>
+  speedy.eat("apple");
+  console.log(speedy.stomach ); 
+  console.log(lazy.stomach ); 
   console.log(hamster.stomach);
-  console.log(speedy);
+  
 
-function interviewQuestion(job){
-    if(job === 'designer'){
-        return function(name){
-            console.log(name + ' is a designer');
-        }
-    }else if(job === 'teacher'){
-        return function(name){
-            console.log(name + ' is a teacher');
-        }
-    }else{
-        return function(name){
-            console.log(name + ' ,what do you do?');
-        }
-    }
-}
 
-var designerQuestion = interviewQuestion('dessigner');
-designerQuestion('john');
+// function interviewQuestion(job){
+//     if(job === 'designer'){
+//         return function(name){
+//             console.log(name + ' is a designer');
+//         }
+//     }else if(job === 'teacher'){
+//         return function(name){
+//             console.log(name + ' is a teacher');
+//         }
+//     }else{
+//         return function(name){
+//             console.log(name + ' ,what do you do?');
+//         }
+//     }
+// }
+
+// var designerQuestion = interviewQuestion('dessigner');
+// designerQuestion('john');
