@@ -1,15 +1,45 @@
 var budgetController = (function(){
-    var x = 20;
-    var add = function(a){
-        return x + a;
-    }
-    return {
-        publicTest : function(b){
-            return (add(b));
-            //console.log(add(b));
+    
+    var Expense = function(id,description,value){
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    };
+    var Income = function(id,description,value){
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    };
+
+    var data = {
+        allItems : {
+            exp : [],
+            inc : []
+        },
+        totals : {
+            exp : 0,
+            inc : 0
         }
-    }
+    };
+
+    return {
+        addItem : function(itemType, itemName, itemvalue){
+            var newItem,ID;
+            
+            //create new ID
+            ID = data.allItems[itemType][data.allItems[itemType].length - 1].id + 1;
+            //create new item
+            if(itemType === 'inc'){
+                newItem = new Income(ID,itemName,itemvalue);
+            }else{ if(itemType  === 'exp')
+                newItem = new Expense(ID,itemName,itemvalue);
+            }
+            data.allItems[itemType].push(newItem);
+            return newItem;
+        }
+    };
 })();
+
 
 var UIController = (function(){
 
@@ -31,7 +61,7 @@ var UIController = (function(){
         getDOMstrings : function(){
             return DOMstring;
         }
-    }
+    };
 
 })();
 
@@ -49,7 +79,7 @@ var controller = (function(budgtCtrl,UICtrl){
 
     var addItem = function (){
         var input = UICtrl.getInput();
-        console.log(input);
+        budgtCtrl.addItem(input)
     };
 
     return {
@@ -62,3 +92,6 @@ var controller = (function(budgtCtrl,UICtrl){
 })(budgetController,UIController);
 
 controller.init();
+
+
+
