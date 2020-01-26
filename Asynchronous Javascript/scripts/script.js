@@ -1,4 +1,4 @@
-function getRecipe(){
+function getRecipes(){
     setTimeout( () => {
         const recipeID = [143,523,150,177];
         console.log(recipeID);
@@ -23,7 +23,7 @@ function getRecipe(){
 }
 
 console.log(`before function is invoked `);
-getRecipe();
+getRecipes();
 console.log(`after function is invoked `);
 
 //Promise
@@ -59,8 +59,8 @@ const getPublisher = publisher => {
 getId
 .then(IDs => {
     console.log(IDs);
-    //return getRecipe(IDs[2]);
- });
+    return getRecipe(IDs[2]);
+ })
 .then(recipe => {
     console.log(recipe);
     return getPublisher('john');
@@ -95,4 +95,19 @@ new Promise(function (resolve, reject) {
    // },1000);
 }).catch(alert);
 
+//Async/await
 
+async function getRecipeAW(){
+    const IDs = await getId;
+    console.log(IDs);
+    const recipe = await getRecipe(IDs[1]);
+    console.log(recipe);
+    const related = await getPublisher('john');
+    console.log(related);
+    return recipe;
+}
+//getRecipeAW();
+
+getRecipeAW().then( result => {
+    console.log(`${result} is the best`);
+})
