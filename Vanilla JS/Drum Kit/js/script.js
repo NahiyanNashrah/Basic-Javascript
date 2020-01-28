@@ -1,4 +1,4 @@
-window.addEventListener('keydown',(e) => {
+window.addEventListener('keypress',(e) => {
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
     if(!audio) return;
@@ -8,6 +8,7 @@ window.addEventListener('keydown',(e) => {
 });
 
 function removeTransition(e){
+    console.log(e);
     if(e.propertyName !== 'transform') return;
     this.classList.remove('playing');
 }
