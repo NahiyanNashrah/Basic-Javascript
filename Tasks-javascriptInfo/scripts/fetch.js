@@ -55,3 +55,50 @@ getUsers(nameArr).then(result => {
 // }
 
 // getUsers(nameArr);
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
+let f = function () {
+  this.a = 1;
+  this.b = 2;
+}
+let o = new f();
+f.prototype.b = 3;
+f.prototype.c = 4;
+console.log(o.a);
+console.log(o.b); 
+console.log(o.c); 
+console.log(o.d); 
+
+function foo(){
+  this.a = 2;
+}
+var bar = Object.create(foo);
+// var bar = new foo();
+bar.b = 'hello';
+console.log(bar.b);
+console.log(bar.a);
+
+function Dog(){
+  this.pupper = 'Pupper';
+}
+Dog.prototype.pupperino = 'Pups.';
+var maddie = new Dog();
+var buddy = Object.create(Dog.prototype);
+
+//Using Object.create()
+console.log(buddy.pupper); //Output is undefined
+console.log(buddy.pupperino); //Output is Pups.
+
+//Using New Keyword
+console.log(maddie.pupper); //Output is Pupper
+console.log(maddie.pupperino); //Output is Pups.
+
+var original = { 
+  'property' : 'original' 
+}
+
+console.log(original.property); // 'original'
+
+var clone = original;
+clone.property = 'clone';
+
+console.log(original.property); 
