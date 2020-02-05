@@ -1,5 +1,5 @@
-:root{
-    --base:#ffc600;
+:root{ /* seletcs the root element(html) base,spacing,blur are declared variables */
+    --base:#ffc600; 
     --spacing: 10px;
     --blur: 10px;
 }
